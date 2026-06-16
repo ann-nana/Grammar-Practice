@@ -70,8 +70,17 @@ input[type=text]{padding:6px}
 
 <script>
 function showTab(id){
- document.querySelectorAll('.section').forEach(s=>s.classList.remove('active'));
- document.getElementById(id).classList.add('active');
+
+    document.querySelectorAll('.section')
+        .forEach(s => s.classList.remove('active'));
+
+    document.getElementById(id)
+        .classList.add('active');
+
+    document.querySelectorAll('.tabs button')
+        .forEach(b => b.classList.remove('active'));
+
+    event.target.classList.add('active');
 }
 
 const mc=[
