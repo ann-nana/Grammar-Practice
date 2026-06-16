@@ -8,6 +8,24 @@
 body{font-family:Arial,sans-serif;margin:0;background:#F5EFE6}
 header{background:#5C1A1B;color:#fff;padding:20px;text-align:center}
 .peek-item{text-align:center;background:#F3E8D7;padding:10px;margin:8px auto;border-radius:8px;max-width:700px}
+    .sneak-container{
+    margin-top:20px;
+}
+
+.sneak-title{
+    text-align:center;
+    color:#5C1A1B;
+    cursor:pointer;
+}
+
+.sneak-content{
+    display:none;
+}
+
+/* Muncul saat kursor menyentuh Sneak Peek */
+.sneak-container:hover .sneak-content{
+    display:block;
+}
 .tabs{
     display:flex;
     justify-content:center;
@@ -63,28 +81,48 @@ input[type=text]{padding:6px}
         Participles • Comparatives & Superlatives
     </p>
 </div>
-    <div class="peek-item">
-Subject-Verb Agreement → The verb agrees with the subject, not nearby nouns.
-</div>
+    <div class="sneak-container">
 
-<div class="peek-item">
-Appositive → Extra information between commas; not the subject, optional.
-</div>
+    <h3 class="sneak-title">
+        👀 Sneak Peek
+    </h3>
 
-<div class="peek-item">
-Present Participle (-ing) → Describes an active noun.
-</div>
+    <div class="sneak-content">
 
-<div class="peek-item">
-Past Participle (V3) → Describes a passive noun.
-</div>
+        <div class="peek-item">
+            Clause → Subject + Verb.
+        </div>
 
-<div class="peek-item">
-Comparative → -er than / more ... than.
-</div>
+        <div class="peek-item">
+            Inversion → Verb/Auxiliary comes before the subject.
+        </div>
 
-<div class="peek-item">
-Superlative → the -est / the most ...
+        <div class="peek-item">
+            Subject-Verb Agreement → The verb agrees with the subject.
+        </div>
+
+        <div class="peek-item">
+            Appositive → Extra information between commas.
+        </div>
+
+        <div class="peek-item">
+            Present Participle (-ing) → Describes an active noun.
+        </div>
+
+        <div class="peek-item">
+            Past Participle (V3) → Describes a passive noun.
+        </div>
+
+        <div class="peek-item">
+            Comparative → -er than / more ... than.
+        </div>
+
+        <div class="peek-item">
+            Superlative → the -est / the most ...
+        </div>
+
+    </div>
+
 </div>
 
 <div id="mc" class="section active">
