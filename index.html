@@ -9,6 +9,8 @@ body{font-family:Arial,sans-serif;margin:0;background:#F5EFE6}
 header{background:#5C1A1B;color:#fff;padding:20px;text-align:center}
 .tabs{display:flex;flex-wrap:wrap;background:#DCC5A1}
 .tabs button{padding:12px;border:none;cursor:pointer}
+.tabs button:hover{background:#5C1A1B;color:white;transition:0.3s}
+.tabs button.active{background:#5C1A1B;color:white}
 .section{display:none;padding:20px}
 .section.active{display:block}
 .card{background:#fff;padding:15px;margin:10px 0;border-radius:8px}
@@ -24,6 +26,22 @@ input[type=text]{padding:6px}
 <button onclick="showTab('mc')">Multiple Choice</button>
 <button onclick="showTab('fib')">Fill in Blank</button>
 <button onclick="showTab('dd')">Drag & Drop Style</button>
+</div>
+
+ <div class="info-box">
+    <h3>Review Material</h3>
+    <p>
+        Question Formation • Inversion • Subject-Verb Agreement •
+        Participles • Comparatives & Superlatives
+    </p>
+
+    <h3>Sneak Peek</h3>
+    <ul>
+        <li>Indirect questions use normal subject-verb order.</li>
+        <li>Never / Seldom / Under no circumstances → inversion.</li>
+        <li>Each, Every, Everybody, Nobody → singular verb.</li>
+        <li>The larger..., the more valuable...</li>
+    </ul>
 </div>
 
 <div id="mc" class="section active">
