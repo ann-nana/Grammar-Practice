@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Islamic Grammar Practice</title>
+<style>
+body{font-family:Arial,sans-serif;margin:0;background:#f4f4f4}
+header{background:#0f2744;color:#fff;padding:20px;text-align:center}
+.tabs{display:flex;flex-wrap:wrap;background:#d4a72c}
+.tabs button{padding:12px;border:none;cursor:pointer}
+.section{display:none;padding:20px}
+.section.active{display:block}
+.card{background:#fff;padding:15px;margin:10px 0;border-radius:8px}
+.correct{color:green}.wrong{color:red}
+.score{font-weight:bold}
+input[type=text]{padding:6px}
+</style>
+</head>
+<body>
+<header><h1>Islamic Grammar Practice</h1><p>Ready for GitHub Pages</p></header>
+
+<div class="tabs">
+<button onclick="showTab('mc')">Multiple Choice</button>
+<button onclick="showTab('fib')">Fill in Blank</button>
+<button onclick="showTab('dd')">Drag & Drop Style</button>
+</div>
+
+<div id="mc" class="section active">
+<h2>Multiple Choice</h2>
+<p class="score">Score: <span id="mcscore">0</span>/15</p>
+<div id="mcq"></div>
+<button onclick="checkMC()">Check Answers</button>
+<p id="mcresult"></p>
+</div>
+
+<div id="fib" class="section">
+<h2>Fill in the Blank</h2>
+<p class="score">Score: <span id="fibscore">0</span>/10</p>
+<div id="fibq"></div>
+<button onclick="checkFIB()">Check Answers</button>
+<p id="fibresult"></p>
+</div>
+
+<div id="dd" class="section">
+<h2>Drag & Drop Style (Select Correct Answer)</h2>
+<p class="score">Score: <span id="ddscore">0</span>/10</p>
+<div id="ddq"></div>
+<button onclick="checkDD()">Check Answers</button>
+<p id="ddresult"></p>
+</div>
+
+<script>
+function showTab(id){
+ document.querySelectorAll('.section').forEach(s=>s.classList.remove('active'));
+ document.getElementById(id).classList.add('active');
+}
+
+const mc=[
+["The lecturer asked the students why ___ increasingly interested in Islamic banking.","they were",["were they","they were","were","did they"]],
+["___ the international conference on Islamic law held every year?","Where is",["Where is","Where the conference is","Where are","Where conference is"]],
+["The researcher explained how ___ implemented.","the regulation was",["was the regulation","the regulation was","did the regulation","regulation was"]],
+["Why ___ during Ramadan?","do many Muslim students fast",["many Muslim students fast","do many Muslim students fast","many Muslim students do fast","fasting many Muslim students"]],
+["The committee wants to know when ___.","the workshop will",["does the workshop","the workshop does","the workshop will","will the workshop"]],
+["In front of the mosque ___ a large fountain.","stands",["stand","stands","standing","are"]],
+["Beyond the pesantren complex ___ several dormitories.","lie",["lies","lie","lying","is"]],
+["Here ___ the books donated by alumni.","are",["is","are","was","has"]],
+["Around the courtyard ___ many students discussing ethics.","are",["are","is","has","was"]],
+["In the center of the hall ___ an impressive model.","stands",["stand","stands","standing","are"]],
+["Never ___ such a large gathering before.","have I seen",["I have seen","have I seen","did I saw","I saw"]],
+["Only after the guest lecture ___ the importance.","did the students understand",["the students understood","did the students understand","understood the students","the students did understand"]],
+["Not once ___ the imam miss the Friday sermon.","has",["did","does","has","had"]],
+["Seldom ___ such detailed research findings.","do we read",["we read","do we read","we reading","reading we"]],
+["Under no circumstances ___ confidential information.","should students share",["students should share","should students share","students sharing","share students"]]
+];
+
+const fib=[
+["Most of the information about Islamic inheritance law ___ available online.","is"],
+["All of the students in the tafsir class ___ the assignment before the deadline.","have completed"],
+["Everybody attending the seminar ___ a certificate of participation.","receives"],
+["Each participant in the Qur'an recitation contest ___ a registration card.","has"],
+["Nobody in the committee ___ the final decision yet.","knows"],
+["Islamic banking is becoming ___ than it was a decade ago.","more popular"],
+["This mosque is the ___ building in the district.","tallest"],
+["The new curriculum is ___ than the previous one.","more effective"],
+["The larger the collection, ___ the library becomes.","the more valuable"],
+["The session on Islamic law was ___.","the most interesting"]
+];
+
+const dd=[
+["KH. Ahmad Dahlan, ___, founded Muhammadiyah.","a prominent Muslim reformer",["a prominent Muslim reformer","he was a prominent Muslim reformer","was a prominent Muslim reformer","being a prominent Muslim reformer he"]],
+["The Islamic finance conference, ___, attracted participants.","held in Jakarta",["held in Jakarta","it was held in Jakarta","was held in Jakarta","holding in Jakarta"]],
+["The students ___ the national Qur'an recitation competition are from different regions.","joining",["joining","are joining","joined","were joining"]],
+["The imam ___ the prayer is highly respected.","leading",["leads","leading","is leading","led"]],
+["The books ___ by the charity organization were distributed.","donated",["donating","donated","donate","donates"]],
+["The article ___ in a reputable journal received citations.","published",["publishing","published","publish","publishes"]],
+["The lecturer ___ about Islamic civilization received an award.","speaking",["speaking","speaks","is speaking","spoke"]],
+["The regulation on halal certification ___ revised every few years.","is",["are","is","have","were"]],
+["The discussion on Islamic ethics in AI ___ very productive yesterday.","was",["was","were","are","have been"]],
+["The curriculum of the Islamic university ___ updated regularly.","is",["are","were","is","have"]]
+];
+
+function build(){
+let h='';
+mc.forEach((q,i)=>{
+h+=`<div class="card"><p>${i+1}. ${q[0]}</p>`;
+q[2].forEach(o=>h+=`<label><input type="radio" name="mc${i}" value="${o}"> ${o}</label><br>`);
+h+='</div>';
+});
+document.getElementById('mcq').innerHTML=h;
+
+h='';
+fib.forEach((q,i)=>{
+h+=`<div class="card">${i+1}. ${q[0]}<br><input id="fib${i}"></div>`;
+});
+document.getElementById('fibq').innerHTML=h;
+
+h='';
+dd.forEach((q,i)=>{
+h+=`<div class="card">${i+1}. ${q[0]}<br><select id="dd${i}">`;
+q[2].forEach(o=>h+=`<option>${o}</option>`);
+h+='</select></div>';
+});
+document.getElementById('ddq').innerHTML=h;
+}
+
+function checkMC(){
+let s=0;
+mc.forEach((q,i)=>{
+let a=document.querySelector(`input[name=mc${i}]:checked`);
+if(a&&a.value===q[1]) s++;
+});
+mcscore.textContent=s;
+mcresult.textContent=`You got ${s}/15`;
+}
+function checkFIB(){
+let s=0;
+fib.forEach((q,i)=>{
+if(document.getElementById('fib'+i).value.trim().toLowerCase()===q[1].toLowerCase()) s++;
+});
+fibscore.textContent=s;
+fibresult.textContent=`You got ${s}/10`;
+}
+function checkDD(){
+let s=0;
+dd.forEach((q,i)=>{
+if(document.getElementById('dd'+i).value===q[1]) s++;
+});
+ddscore.textContent=s;
+ddresult.textContent=`You got ${s}/10`;
+}
+build();
+</script>
+</body>
+</html>
