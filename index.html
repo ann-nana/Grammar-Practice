@@ -7,10 +7,39 @@
 <style>
 body{font-family:Arial,sans-serif;margin:0;background:#F5EFE6}
 header{background:#5C1A1B;color:#fff;padding:20px;text-align:center}
-.tabs{display:flex;flex-wrap:wrap;background:#DCC5A1}
-.tabs button{padding:12px;border:none;cursor:pointer}
-.tabs button:hover{background:#5C1A1B;color:white;transition:0.3s}
-.tabs button.active{background:#5C1A1B;color:white}
+.tabs{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    gap:20px;
+    background:#F3E8D7;
+    padding:15px 10px;
+    border-bottom:2px solid #D8C3A5;
+}
+
+.tabs button{
+    background:transparent;
+    color:#5C1A1B;
+    border:none;
+    padding:10px 20px;
+    font-size:16px;
+    font-weight:600;
+    cursor:pointer;
+    border-radius:6px;
+    transition:all 0.3s ease;
+}
+
+/* Saat disentuh kursor */
+.tabs button:hover{
+    background:#7A1F2B;
+    color:white;
+}
+
+/* Menu yang sedang aktif */
+.tabs button.active{
+    background:#5C1A1B;
+    color:white;
+}
 .section{display:none;padding:20px}
 .section.active{display:block}
 .card{background:#fff;padding:15px;margin:10px 0;border-radius:8px}
